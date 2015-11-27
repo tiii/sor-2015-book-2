@@ -17,7 +17,7 @@
       <div class="collapse navbar-collapse">
         <p class="navbar-text navbar-right">
           <% if user_signed_in? %>
-            Angemeldet als <%= current_user.name %>
+            Angemeldet als <%= link_to current_user.name, edit_user_registration_path(id: current_user.id) %>
             (<%= link_to "abmelden", destroy_user_session_path, method: :delete %>)
           <% else %>
             <%= link_to "anmelden", new_user_session_path %> |
