@@ -1,0 +1,5 @@
+<div class="page-header">
+  <h1><%= @post.title %> <small><%= l(@post.created_at, format: :short) %></small></h1>
+</div>
+
+<%= simple_format(@post.body) %>
