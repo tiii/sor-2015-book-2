@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-12">
+    <% if notice.present? %>
+      <p class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <%= notice %>
+      </p>
+    <% end %>
+
+    <% if alert.present? %>
+      <p class="alert alert-warning alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <%= alert %>
+      </p>
+    <% end %>
+  </div>
+</div>

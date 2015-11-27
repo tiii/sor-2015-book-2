@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SorBasisApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="<%= root_path %>">SOR Basis App</a>
+      </div>
+
+      <div class="collapse navbar-collapse">
+        <p class="navbar-text navbar-right">
+          <% if user_signed_in? %>
+            Angemeldet als <%= current_user.name %>
+            (<%= link_to "abmelden", destroy_user_session_path, method: :delete %>)
+          <% else %>
+            <%= link_to "anmelden", new_user_session_path %> |
+            <%= link_to "registrieren", new_user_registration_path %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <%= render partial: "alerts" %>
+
+
+    <div class="row">
+      <div class="col-md-12">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
