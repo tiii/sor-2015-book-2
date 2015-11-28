@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(version: 20151128140659) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "book_id",    null: false
+    t.text     "review",     null: false
+    t.integer  "value",      null: false
+    t.integer  "user_id",    null: false
+    t.string   "headline",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",               default: "", null: false
     t.string   "encrypted_password",  default: "", null: false

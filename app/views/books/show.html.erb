@@ -1,33 +1,51 @@
 <p id="notice"><%= notice %></p>
 
-<h2>
-  <%= @book.title %>
-</h2>
+<div id="bookheader">
+  <h2>
+    <%= @book.title %>
+  </h2>
+  <h4 id="author">
+    <%= @book.author %>
+</h4>
+</div>
 
-<p>
-  <strong>Desc:</strong>
-  <%= @book.desc %>
-</p>
+<div class="row">
+  
+  <div class="col-md-4">
+    <%= image_tag("dummy_book.png", class:"img-responsive") %>
+  </div>
 
-<p>
-  <strong>Price:</strong>
-  <%= @book.price %>
-</p>
+  <div class="col-md-8">
+    <p>
+      <%= @book.desc %>
+    </p>
 
-<p>
-  <strong>Author:</strong>
-  <%= @book.author %>
-</p>
+    <div class="info">
+      <div class="price"> <%= @book.price %> &euro; </div>
+      <div><strong><%= @book.genre %></strong></div>
+      <div>ISBN: <%= @book.isbn %></div>
+    </div>
+  </div>
 
-<p>
-  <strong>Genre:</strong>
-  <%= @book.genre %>
-</p>
+</div>
 
-<p>
-  <strong>Isbn:</strong>
-  <%= @book.isbn %>
-</p>
+<% @book.reviews.each do |review| %>
+
+<div class="review-wrapper">
+  <div class="headline"><strong><%=review.headline%></strong></div>
+  <div class="bewertung"><i><%=review.user.name%> hat das Produkt mit <%=review.value%>/10 Punkten bewertet.</i></div>
+  <div><%=review.review%></div>
+</div>
+
+<%end%>
+
+<% if user_signed_in? %>
+<div class="comment-input">
+  <%= render 'reviews/form'%>
+</div>
+<% else %>
+  <p>Du bist nicht eingeloggt. <%= link_to("Login", new_user_session_path) %></p>
+<% end %>
 
 <% if user_signed_in? %>
   <%= form_tag add_book_cart_path(current_user.cart, @book), :method => 'post' do%>
