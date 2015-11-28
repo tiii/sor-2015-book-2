@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :carts do
+  resources :carts, only: [:show] do
     member do
       post 'add_book/:book_id', to: 'carts#add_book', as: 'add_book'
     end
