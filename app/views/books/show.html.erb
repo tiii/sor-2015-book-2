@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h2>
+  <%= @book.title %>
+</h2>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @book.desc %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @book.price %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @book.author %>
+</p>
+
+<p>
+  <strong>Genre:</strong>
+  <%= @book.genre %>
+</p>
+
+<p>
+  <strong>Isbn:</strong>
+  <%= @book.isbn %>
+</p>
+
+<%= link_to 'Back', books_path %>
