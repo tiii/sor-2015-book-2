@@ -18,6 +18,7 @@
       <div class="collapse navbar-collapse">
         <p class="navbar-text navbar-right">
           <% if user_signed_in? %>
+            <%= link_to "Mein Warenkorb", current_user.cart %> |
             Angemeldet als <%= link_to current_user.name, edit_user_registration_path(id: current_user.id) %>
             (<%= link_to "abmelden", destroy_user_session_path, method: :delete %>)
           <% else %>

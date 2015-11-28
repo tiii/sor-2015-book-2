@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :carts do
+    member do
+      post 'add_book/:book_id', to: 'carts#add_book', as: 'add_book'
+    end
+  end
+
   resources :posts, only: [:index, :show] do
     resources :comments, only: [:new, :create]
   end
