@@ -29,4 +29,10 @@
   <%= @book.isbn %>
 </p>
 
+<%= form_tag add_book_cart_path(current_user.cart, @book), :method => 'post' do%>
+<div class="form-group">
+  <%= submit_tag "In den Warenkorb", :id => nil %>
+</div>
+<% end %>
+
 <%= link_to 'Back', books_path %>
