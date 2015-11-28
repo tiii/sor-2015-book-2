@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :posts, only: [:index, :show]
+  
+  resources :posts, only: [:index, :show] do 
+    resources :comments, only: [:new, :create]
+  end
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users

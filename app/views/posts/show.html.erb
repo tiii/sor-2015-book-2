@@ -3,3 +3,25 @@
 </div>
 
 <%= simple_format(@post.body) %>
+
+<div class="comment-wrapper">
+  <% @post.comments.each do |comment| %>
+    
+  <div class="comment">
+    <%= comment.body %>
+    
+    <div class="metadata">
+      <%= l(comment.created_at, format: :short) %>  |  <%= comment.user.name %> 
+    </div>
+  </div>
+  
+  <% end %>
+
+  <% if user_signed_in? %>
+  <div class="comment-input">
+    <%= render 'comments/form'%>
+  </div>
+  <% else %>
+    <p>Du bist nicht eingeloggt. <%= link_to("Login", new_user_session_path) %></p>
+  <% end %>
+</div>

@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new(user: current_user)
   end
 
 end

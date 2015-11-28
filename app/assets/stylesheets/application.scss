@@ -14,3 +14,26 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.comment-wrapper{
+  margin: 25px;
+}
+.comment{
+  width: 50%;
+  min-width: 400px;
+  margin-top: 15px;
+  background: #efefef;
+  padding: 10px;
+}
+
+.comment .metadata{
+  text-align: right;
+}
+
+.comment-input{
+  margin-top: 20px;
+}
+
+.comment-input-field{
+  width: 400px;
+}
