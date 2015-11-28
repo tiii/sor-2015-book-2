@@ -8,6 +8,7 @@ class BooksController < ApplicationController
 
   # GET /books/1
   def show
+    @review=Review.new(book: @book)
   end
 
   # GET /books/new
