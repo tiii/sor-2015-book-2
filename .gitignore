@@ -19,3 +19,10 @@
 
 **.orig
 .DS_Store
+
+spec/controllers/carts_controller_spec.rb
+spec/helpers/
+spec/models/
+spec/requests/carts_spec.rb
+spec/routing/carts_routing_spec.rb
+spec/views/carts/
