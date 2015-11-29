@@ -3,22 +3,34 @@
   <thead>
     <tr>
       <th>Buch</th>
-      <th>Preis</th>
+      <th>Anzahl</th>
+      <th>Einzelpreis</th>
+      <th>Gesamtpreis</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <% @cart.books.each do |book| %>
+    <% @cart.books_carts.each do |books_cart| %>
     <tr>
-      <td><%= book.title %></td>
-      <td><%= number_to_currency book.price %></td>
+      <td><%= books_cart.book.title %></td>
       <td>
-        <%= link_to '', delete_book_cart_path(current_user.cart, book), :method => :delete, class: 'glyphicon glyphicon-remove' %></td>
+        <%= form_for(books_cart, method: :put) do |f| %>
+          <%= f.number_field :quantity, min:1 %>
+          <%= f.submit 'Aktualisieren'%>
+        
+        <% end %>
+      </td>
+      <td><%= number_to_currency books_cart.book.price %></td>
+      <td><%= number_to_currency books_cart.sum %></td>
+      <td>
+        <%= link_to '', delete_book_cart_path(current_user.cart, books_cart.book), :method => :delete, class: 'glyphicon glyphicon-remove' %></td>
     </tr>  
     <% end %>
     <tfoot>
       <tr>
         <td>Summe:</td>
+        <td></td>
+        <td></td>
         <td><%= number_to_currency @cart.sum %></td>
         <td></td>
       </tr>

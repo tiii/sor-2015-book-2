@@ -6,6 +6,9 @@ class CreateCarts < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    create_join_table :books, :carts
+    create_table :books_carts do |t|
+      t.references :book, index: true, foreign_key: true
+      t.references :cart, index: true, foreign_key: true
+    end
   end
 end
