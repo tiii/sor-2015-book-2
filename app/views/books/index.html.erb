@@ -28,7 +28,7 @@
     <% @books.each do |book| %>
       <tr>
         <td><%= book.title %></td>
-        <td><%= book.desc %></td>
+        <td><%= simple_format(truncate(book.desc, length: 200)) %></td>
         <td><%= number_to_currency book.price %></td>
         <td><%= book.author %></td>
         <td><%= book.genre %></td>

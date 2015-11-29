@@ -19,7 +19,7 @@
     </p>
 
     <div class="info">
-      <div class="price"> <%= @book.price %> &euro; </div>
+      <div class="price"> <%= number_to_currency @book.price %> </div>
       <div><strong><%= @book.genre %></strong></div>
       <div>ISBN: <%= @book.isbn %></div>
     </div>
