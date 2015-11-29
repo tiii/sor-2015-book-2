@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :books, only: [:index, :show] do
       resources :reviews, only: [:new, :create]
   end
+  
+  resources :books_cart, only: [:update]
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users

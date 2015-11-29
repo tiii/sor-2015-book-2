@@ -4,19 +4,32 @@
   <thead>
     <tr>
       <th>Buch</th>
-      <th>Preis</th>
+      <th>Anzahl</th>
+      <th>Einzelpreis</th>
+      <th>Gesamtpreis</th>
     </tr>
   </thead>
   <tbody>
-    <% @cart.books.each do |book| %>
+    <% @cart.books_carts.each do |books_cart| %>
     <tr>
-      <td><%= book.title %></td>
-      <td><%= number_to_currency book.price %></td>
+      <td><%= books_cart.book.title %></td>
+      <td>
+        <%= form_for(books_cart, method: :put) do |f| %>
+          <%= f.number_field :quantity, min:1 %>
+          <%= f.submit 'Aktualisieren'%>
+        
+        <% end %>
+      </td>
+      <td><%= number_to_currency books_cart.book.price %></td>
+      <td><%= number_to_currency books_cart.sum %></td>
+      
     </tr>  
     <% end %>
     <tfoot>
       <tr>
         <td>Summe:</td>
+        <td></td>
+        <td></td>
         <td><%= number_to_currency @cart.sum %></td>
       </tr>
     </tfoot>
