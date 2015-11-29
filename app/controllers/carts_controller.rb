@@ -11,7 +11,9 @@ class CartsController < ApplicationController
     book = Book.find(params[:book_id])
 
     if @cart.books.include?(book)
-      redirect_to @cart, alert: 'Buch konnte nicht hinzufügt werden. :('
+      b = @cart.books_carts.find_by!(book_id: params[:book_id])
+      b.update(quantity: b.quantity + 1)
+      redirect_to @cart , notice: 'Buch-Anzahl erhöht, da es schon vorhanden war.'
     else
       @cart.books << book
       redirect_to @cart, notice: 'Buch erfolgreich hinzufügt.'
