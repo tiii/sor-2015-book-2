@@ -4,5 +4,5 @@ class Review < ActiveRecord::Base
 
   validates :review, presence: true
   validates :headline, presence: true
-  validates :value, :inclusion => {:in => 1..10}
+  validates :value, :inclusion => {:in => 0..10}
 end
