@@ -27,7 +27,23 @@ if Rails.env.development?
 
   Book.where({
     title: "Continuous Integration",
-    desc: "Ein Buch",
+    desc: "For any software developer who has spent days in “integration hell, 
+    cobbling together myriad software components,Continuous Integration: 
+    Improving Software Quality and Reducing Riskillustrates how to transform 
+    integration from a necessary evil into an everyday part of the development 
+    process. The key, as the authors show, is to integrate regularly and often 
+    using continuous integration (CI) practices and techniques.
+    
+    The authors first examine the concept of CI and its practices from the 
+    ground up and then move on to explore other effective processes performed by 
+    CI systems, such as database integration, testing, inspection, deployment, and 
+    feedback. Through more than forty CI-related practices using application 
+    examples in different languages, readers learn that CI leads to more rapid 
+    software development, produces deployable software at every step in the 
+    development lifecycle, and reduces the time between defect introduction 
+    and detection, saving time and lowering costs. With successful implementation 
+    of CI, developers reduce risks and repetitive manual processes, and teams 
+    receive better project visibility.",
     price: 30.50,
     author: "Martin Fowler",
     genre: "Computer Science",
