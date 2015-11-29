@@ -10,22 +10,23 @@
       </ul>
     </div>
   <% end %>
-
-<div class="field form-group">
-  <div class="field">
-    <%= f.label "Titel" %><br>
-    <%= f.text_field :headline %>
+  <div class="field form-group jumbotron">
+    <div class="field">
+      <%= f.label "Titel" %><br>
+      <%= f.text_field :headline, class:"form-control" %>
+    </div>
+    <div class="field">
+      <%= f.label "Bewertung" %><br>
+      <%= f.select(:value, options_for_select(0..10)) %>
+    <div class="field">
+      <%= f.label "Erfahrungsbericht" %><br>
+      <%= f.text_area :review, class:"form-control" %>
+    </div>
+    </div>
+    <br>
+    <div class="actions">
+      <%= f.submit "Abschicken", class: 'btn btn-primary' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label "Bewertung" %><br>
-    <%= f.select(:value, options_for_select(0..10)) %>
-  <div class="field">
-    <%= f.label "Erfahrungsbericht" %><br>
-    <%= f.text_area :review %>
-  </div>
-  </div>
-  <div class="actions">
-    <%= f.submit "Abschicken", class: 'btn btn-primary' %>
-  </div>
-</div>
 <% end %>
+  
