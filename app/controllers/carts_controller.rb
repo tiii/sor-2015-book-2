@@ -1,5 +1,7 @@
 class CartsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_cart
+
 
   # GET /carts/1
   def show
@@ -7,18 +9,29 @@ class CartsController < ApplicationController
 
   def add_book
     book = Book.find(params[:book_id])
-    @cart.books << book
 
-    if @cart.save
-      redirect_to @cart, notice: 'Buch erfolgreich hinzufügt.'
+    if @cart.books.include?(book)
+      redirect_to @cart, alert: 'Buch konnte nicht hinzufügt werden. :('
     else
-      redirect_to book, error: 'Buch konnte nicht hinzufügt werden. :('
+      @cart.books << book
+      redirect_to @cart, notice: 'Buch erfolgreich hinzufügt.'
     end
+  end
+
+  def delete_book
+    book = @cart.books.find(params[:book_id])
+
+    if @cart.books.delete(book)
+      redirect_to @cart, notice: 'Buch erfolgreich entfernt.'
+    else
+      redirect_to @cart, alert: 'Buch konnte nicht entfernt werden. :('
+    end
+
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cart
-      @cart = Cart.find(params[:id])
+      @cart = current_user.cart
     end
 end

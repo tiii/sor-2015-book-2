@@ -1,10 +1,10 @@
-<p id="notice"><%= notice %></p>
 <h1>Warenkorb</h1>
 <table class="table table-striped">
   <thead>
     <tr>
       <th>Buch</th>
       <th>Preis</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -12,12 +12,15 @@
     <tr>
       <td><%= book.title %></td>
       <td><%= number_to_currency book.price %></td>
+      <td>
+        <%= link_to '', delete_book_cart_path(current_user.cart, book), :method => :delete, class: 'glyphicon glyphicon-remove' %></td>
     </tr>  
     <% end %>
     <tfoot>
       <tr>
         <td>Summe:</td>
         <td><%= number_to_currency @cart.sum %></td>
+        <td></td>
       </tr>
     </tfoot>
   </tbody>
