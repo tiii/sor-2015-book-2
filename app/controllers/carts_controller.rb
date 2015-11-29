@@ -30,6 +30,12 @@ class CartsController < ApplicationController
     end
 
   end
+    
+  def checkout
+    if @cart.books.empty?
+      redirect_to @cart, alert: 'Ihr Warenkorb ist leer.'
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

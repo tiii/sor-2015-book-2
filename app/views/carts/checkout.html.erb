@@ -1,4 +1,4 @@
-<h1>Warenkorb</h1>
+<h1>Ihre Bestellung</h1>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -6,24 +6,16 @@
       <th>Anzahl</th>
       <th>Einzelpreis</th>
       <th>Gesamtpreis</th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @cart.books_carts.each do |books_cart| %>
     <tr>
       <td><%= books_cart.book.title %></td>
-      <td>
-        <%= form_for(books_cart, method: :put) do |f| %>
-          <%= f.number_field :quantity, min:1, max:2 %>
-          <%= f.submit 'Aktualisieren'%>
-        
-        <% end %>
-      </td>
+      <td><%= books_cart.quantity%> </td>
       <td><%= number_to_currency books_cart.book.price %></td>
       <td><%= number_to_currency books_cart.sum %></td>
-      <td>
-        <%= link_to '', delete_book_cart_path(current_user.cart, books_cart.book), :method => :delete, class: 'glyphicon glyphicon-remove' %></td>
+      
     </tr>  
     <% end %>
     <tfoot>
@@ -32,11 +24,10 @@
         <td></td>
         <td></td>
         <td><%= number_to_currency @cart.sum %></td>
-        <td></td>
       </tr>
     </tfoot>
   </tbody>
 
 </table>
 
-<%= link_to "Bestellen", checkout_cart_path(@cart), class:"btn btn-primary"%>
+<%= link_to "Bestellen", orders_path(), class:"btn btn-primary", data:{method:"post"} %>
