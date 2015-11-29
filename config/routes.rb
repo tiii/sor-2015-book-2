@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :carts, only: [:show] do
+  resources :orders, only: [:create]
+  
+  resources :carts, only: [:show, :update] do
     member do
       post 'add_book/:book_id', to: 'carts#add_book', as: 'add_book'
+      get 'checkout'
     end
   end
 
@@ -14,6 +17,7 @@ Rails.application.routes.draw do
   end
   
   resources :books_cart, only: [:update]
+
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users

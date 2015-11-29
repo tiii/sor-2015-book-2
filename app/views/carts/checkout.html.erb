@@ -1,5 +1,4 @@
-<p id="notice"><%= notice %></p>
-<h1>Warenkorb</h1>
+<h1>Ihre Bestellung</h1>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -13,13 +12,7 @@
     <% @cart.books_carts.each do |books_cart| %>
     <tr>
       <td><%= books_cart.book.title %></td>
-      <td>
-        <%= form_for(books_cart, method: :put) do |f| %>
-          <%= f.number_field :quantity, min:1, max:2 %>
-          <%= f.submit 'Aktualisieren'%>
-        
-        <% end %>
-      </td>
+      <td><%= books_cart.quantity%> </td>
       <td><%= number_to_currency books_cart.book.price %></td>
       <td><%= number_to_currency books_cart.sum %></td>
       
@@ -37,4 +30,4 @@
 
 </table>
 
-<%= link_to "Bestellen", checkout_cart_path(@cart), class:"btn btn-primary"%>
+<%= link_to "Bestellen", orders_path(), class:"btn btn-primary", data:{method:"post"} %>
