@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :carts, only: [:show, :update] do
     member do
       post 'add_book/:book_id', to: 'carts#add_book', as: 'add_book'
+      delete 'delete_book/:book_id', to: 'carts#delete_book', as: 'delete_book'
       get 'checkout'
     end
   end
