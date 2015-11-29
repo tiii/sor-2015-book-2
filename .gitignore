@@ -26,3 +26,5 @@ spec/models/
 spec/requests/carts_spec.rb
 spec/routing/carts_routing_spec.rb
 spec/views/carts/
+
+.byebug_history
