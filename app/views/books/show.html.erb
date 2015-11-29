@@ -18,14 +18,32 @@
       <%= @book.desc %>
     </p>
 
-    <div class="info">
-      <div class="price"> <%= number_to_currency @book.price %> </div>
-      <div><strong><%= @book.genre %></strong></div>
-      <div>ISBN: <%= @book.isbn %></div>
+    <div class="row ">
+      <div class="col-md-3">
+        <div class="price"> <%= number_to_currency @book.price %> </div>
+        <div><strong><%= @book.genre %></strong></div>
+        <div>ISBN: <%= @book.isbn %></div>
+      </div>
+      <div class="col-md-3">
+        <% if user_signed_in? %>
+          <%= form_tag add_book_cart_path(current_user.cart, @book), :method => 'post' do%>
+            <div class="form-group" id="to-cart">
+            <%= submit_tag "In den Warenkorb", :id => nil, class:"btn btn-primary" %>
+            </div>
+          <% end %>
+        <% else %>
+          <p>Zum Kaufen musst du eingeloggt sein. <%= link_to("Login", new_user_session_path) %></p>
+        <% end %>
+      </div>
+      
     </div>
   </div>
+  
 
 </div>
+
+<%= link_to 'Back', books_path %>
+
 
 <% @book.reviews.each do |review| %>
 
@@ -44,14 +62,3 @@
 <% else %>
   <p>Du bist nicht eingeloggt. <%= link_to("Login", new_user_session_path) %></p>
 <% end %>
-
-<% if user_signed_in? %>
-  <%= form_tag add_book_cart_path(current_user.cart, @book), :method => 'post' do%>
-    <div class="form-group">
-      <%= submit_tag "In den Warenkorb", :id => nil %>
-    </div>
-  <% end %>
-<% else %>
-  <p>Zum Kaufen musst du eingeloggt sein. <%= link_to("Login", new_user_session_path) %></p>
-<% end %>
-<%= link_to 'Back', books_path %>
