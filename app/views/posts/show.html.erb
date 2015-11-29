@@ -6,15 +6,15 @@
 
 <div class="comment-wrapper">
   <% @post.comments.each do |comment| %>
-    
+
   <div class="comment">
     <%= comment.body %>
-    
+
     <div class="metadata">
-      <%= l(comment.created_at, format: :short) %>  |  <%= comment.user.name %> 
+      <%= l(comment.created_at, format: :short) %>  |  <%= comment.user.name %>
     </div>
   </div>
-  
+
   <% end %>
 
   <% if user_signed_in? %>
